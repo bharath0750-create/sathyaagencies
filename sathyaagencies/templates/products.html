@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Gas Products | Sathya Agencies{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container"><span class="kicker">GAS PRODUCTS</span><h1>Medical & industrial gases.</h1><p>Browse the gas categories currently supported by Sathya Agencies.</p></div></section>
+<section class="section"><div class="container product-grid">{% for gas in gases %}<article class="product-card"><div class="gas-icon">{{ "O₂" if "Oxygen" in gas[1] else ("N₂" if "Nitrogen" in gas[1] else "Ar") }}</div><span class="availability">{{ gas[3] }} · {{ gas[5] }}</span><h3>{{ gas[1] }}</h3><p>{{ gas[2] }}</p><a class="text-link" href="{{ url_for("book_cylinder") if session.get("user_id") else url_for("login") }}">Book now →</a></article>{% else %}<p class="empty-state">No products are available right now.</p>{% endfor %}</div></section>
+{% endblock %}

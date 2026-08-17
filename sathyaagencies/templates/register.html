@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Create Account{% endblock %}
+{% block content %}<section class="auth-shell"><div class="auth-card auth-wide"><span class="kicker">GET STARTED</span><h1>Create your account</h1><p class="muted">Register once to manage your cylinder bookings online.</p>
+<form method="POST" action="{{ url_for('register') }}" class="form-stack">
+<div class="form-two"><label>Full name<input name="name" placeholder="Your full name" required></label><label>Mobile number<input type="tel" name="phone" placeholder="10-digit mobile number" required pattern="[0-9]{10}"></label></div>
+<label>Email address<input type="email" name="email" placeholder="you@example.com" required></label>
+<div class="form-two"><label>Password<input type="password" name="password" minlength="6" placeholder="Minimum 6 characters" required></label><label>Confirm password<input type="password" name="confirm_password" minlength="6" placeholder="Repeat password" required></label></div>
+<label>Delivery address<textarea name="address" rows="3" placeholder="Address (optional)"></textarea></label>
+<div class="form-two"><label>City<input name="city" placeholder="City"></label><label>Pincode<input name="pincode" placeholder="Pincode" inputmode="numeric"></label></div>
+<button class="btn btn-primary full" type="submit">Create account →</button></form>
+<p class="form-foot">Already registered? <a href="{{ url_for('login') }}">Sign in</a></p></div></section>{% endblock %}

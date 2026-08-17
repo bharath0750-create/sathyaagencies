@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Book a Cylinder{% endblock %}
+{% block content %}
+<section class="page-hero compact"><div class="container"><span class="kicker">ONLINE BOOKING</span><h1>Book a cylinder</h1><p>Choose a gas and provide the delivery details. Only 10L cylinders are currently available.</p></div></section>
+<section class="section"><div class="container booking-layout"><form method="POST" class="panel form-stack"><div class="panel-head"><h2>Order details</h2><span>Cash on delivery</span></div>
+<label>Gas product<select name="gas_id" required>{% for gas in gases %}<option value="{{ gas[0] }}">{{ gas[1] }} — {{ gas[3] }} — {{ gas[4] }} available</option>{% else %}<option disabled>No gas available</option>{% endfor %}</select></label>
+<label>Quantity<input type="number" name="quantity" min="1" max="50" value="1" required></label>
+<div class="form-two"><label>Customer name<input name="customer_name" value="{{ session.get('user_name','') }}" required></label><label>Phone<input type="tel" name="phone" value="{{ session.get('phone','') }}" pattern="[0-9]{10}" required></label></div>
+<label>Email<input type="email" name="email" value="{{ session.get('email','') }}" required></label>
+<label>Delivery address<textarea name="address" rows="3" required placeholder="Full delivery address"></textarea></label>
+<div class="form-two"><label>City<input name="city" required></label><label>Pincode<input name="pincode" required inputmode="numeric"></label></div>
+<button class="btn btn-primary full" type="submit">Place booking →</button></form>
+<aside class="booking-side"><div class="side-icon">SA</div><h3>Before you book</h3><ul><li>Only 10L cylinders are available.</li><li>Availability is shown before placing an order.</li><li>Payment method: Cash on Delivery.</li><li>Keep your phone available for delivery coordination.</li></ul></aside></div></section>
+{% endblock %}

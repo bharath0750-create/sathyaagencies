@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}<section class="auth-shell"><div class="auth-card"><span class="kicker">ADMIN PORTAL</span><h1>Administrator sign in</h1><p class="muted">Secure access to the management dashboard.</p>
+<form method="POST" action="{{ url_for('admin_login') }}" class="form-stack">
+<label>Email address<input type="email" name="email" placeholder="you@example.com" required autocomplete="email"></label>
+<label>Password<input type="password" name="password" placeholder="Enter your password" required autocomplete="current-password"></label>
+<button class="btn btn-primary full" type="submit">Sign in →</button></form>
+<p class="form-foot">Need customer access? <a href="{{ url_for('login') }}">Customer login</a></p><p class="form-foot"><a href="{{ url_for('admin_login') }}">Administrator login</a></p></div></section>{% endblock %}

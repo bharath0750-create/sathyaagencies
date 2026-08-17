@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Sathya Agencies | Medical & Industrial Gas Supplier{% endblock %}
+{% block content %}
+<section class="hero" id="home">
+ <div class="container hero-grid">
+  <div class="hero-copy">
+   <span class="kicker">TRUSTED GAS SUPPLY</span>
+   <h1>Reliable gas supply.<br><span>Delivered with care.</span></h1>
+   <p>Book 10L cylinders for medical and industrial requirements through a simple, secure online service.</p>
+   <div class="hero-actions"><a class="btn btn-primary" href="{{ url_for('book_cylinder') if session.get('user_id') else url_for('login') }}">Book a Cylinder <span>→</span></a><a class="btn btn-light" href="{{ url_for('contact') }}">Contact Us</a></div>
+   <div class="trust-row"><span>✓ Reliable supply</span><span>✓ 10L cylinders</span><span>✓ Cash on delivery</span></div>
+  </div>
+  <div class="hero-card">
+   <div class="orb">O₂</div><span class="card-label">SATHYA AGENCIES</span><h3>Medical & Industrial Gases</h3><p>Professional cylinder supply for healthcare, fabrication and industrial applications.</p>
+   <div class="hero-card-list"><div><b>4</b><span>Gas types</span></div><div><b>10L</b><span>Available size</span></div><div><b>COD</b><span>Payment</span></div></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="products">
+ <div class="container">
+  <div class="section-head"><span class="kicker">OUR PRODUCTS</span><h2>Choose the right gas for your need</h2><p>Quality-focused supply of commonly used medical and industrial gases.</p></div>
+  <div class="product-grid">
+  {% set fallback = [('Medical Oxygen','O₂','Healthcare and medical oxygen requirements.'),('Industrial Oxygen','O₂','Welding, fabrication and industrial use.'),('Nitrogen','N₂','Industrial and commercial applications.'),('Argon','Ar','Welding and precision industrial applications.')] %}
+  {% for item in fallback %}
+  <article class="product-card"><div class="gas-icon">{{ item[1] }}</div><span class="availability">10L cylinder</span><h3>{{ item[0] }}</h3><p>{{ item[2] }}</p><a href="{{ url_for('book_cylinder') if session.get('user_id') else url_for('login') }}" class="text-link">Book now →</a></article>
+  {% endfor %}
+  </div>
+ </div>
+</section>
+
+<section class="section section-soft">
+ <div class="container feature-grid">
+  <div><span class="kicker">WHY SATHYA AGENCIES</span><h2>Simple ordering, dependable service.</h2><p>We make cylinder booking easier for customers who need dependable gas supply without unnecessary complexity.</p></div>
+  <div class="feature-list"><div><b>01</b><div><h3>Easy online booking</h3><p>Select a gas, quantity and delivery details in minutes.</p></div></div><div><b>02</b><div><h3>Clear booking status</h3><p>Track pending, confirmed, delivery and cancellation status.</p></div></div><div><b>03</b><div><h3>Customer-first support</h3><p>Reach us directly for product and delivery enquiries.</p></div></div></div>
+ </div>
+</section>
+<section class="cta"><div class="container cta-inner"><div><span class="kicker">NEED A CYLINDER?</span><h2>Ready to place your order?</h2></div><a class="btn btn-white" href="{{ url_for('book_cylinder') if session.get('user_id') else url_for('login') }}">Start Booking →</a></div></section>
+{% endblock %}
